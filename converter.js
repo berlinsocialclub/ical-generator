@@ -1,10 +1,10 @@
-// Example function to generate and download .ics file from URL parameters
 function generateICalFromParams() {
     const urlParams = new URLSearchParams(window.location.search);
     const title = urlParams.get('title') || 'Untitled Event';
     const start = urlParams.get('start') || '20251001T100000';
     const end = urlParams.get('end') || '20251001T110000';
     const description = urlParams.get('description') || '';
+    const location = urlParams.get('location') || '';
     const now = new Date().toISOString().replace(/[-:]/g, '').replace('Z', '').split('.')[0];
     const icsContent = [
         'BEGIN:VCALENDAR',
@@ -18,6 +18,7 @@ function generateICalFromParams() {
         `DTEND:${end}`,
         `SUMMARY:${title}`,
         `DESCRIPTION:${description}`,
+        `LOCATION:${location}`,
         `LAST-MODIFIED:${now}`,
         'SEQUENCE:0',
         'END:VEVENT',
