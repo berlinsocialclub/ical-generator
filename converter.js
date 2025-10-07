@@ -1,10 +1,10 @@
 function generateICalFromParams() {
     const urlParams = new URLSearchParams(window.location.search);
-    const title = urlParams.get('title') || 'Untitled Event';
-    const start = urlParams.get('start') || '20251001T100000';
-    const end = urlParams.get('end') || '20251001T110000';
-    const description = urlParams.get('description') || '';
-    const location = urlParams.get('location') || '';
+    const title = urlParams.get('title') || urlParams.get('t') || 'Untitled Event';
+    const start = urlParams.get('start') || urlParams.get('s') || '20251001T100000';
+    const end = urlParams.get('end') || urlParams.get('e') || '20251001T110000';
+    const description = urlParams.get('description') || urlParams.get('d') || '';
+    const location = urlParams.get('location') || urlParams.get('l') || '';
     const now = new Date().toISOString().replace(/[-:]/g, '').replace('Z', '').split('.')[0];
     const icsContent = [
         'BEGIN:VCALENDAR',
